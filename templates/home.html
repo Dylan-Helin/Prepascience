@@ -9,10 +9,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+
     <title>Prepascience</title>
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logo.ico' %}">
 </head>
-<body style="padding-top: 5rem;">
+<body style="padding-top: 4%;" class="bg-secondary" >
 <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #e3f2fd;">
     <a class="navbar-brand" href="#">
         <img src="{% static 'images/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -24,11 +25,15 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Projet <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#"> Projets <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Materiaux</a>
+                <a class="nav-link" href="#"> Groupes </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"> Aide </a>
+            </li>
+
             <!--<li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li>-->
@@ -43,15 +48,24 @@
         </ul>
     </div>
 </nav>
-<main role="main" class="container">
-    <div>
-        <h1>Ceci est un test</h1>
-        <ul>
+
+<main role="main" class="container" style="margin-left: 5%; margin-right: 5%">
+    <div class="jumbotron jumbotron-fluid" >
+             <div class="container">
+                 <h1 class="display-4">PREPASCIENCE</h1>
+                 <p class="lead">Bienvenue sur le site Prepascience,</p>
+                 <p>Sur ce site vous pourrez créer et gérer vos projets tel que des travaux pratiques ou autre,
+                 vous pourrez également inviter d'autre utilisateur a travaillez sur vos projets par l'entremise de la création de groupe.</p>
+            </div>
+            </div>
+
+
+    <!--<ul>
             {%  for i in personnes %}
                 <li>{{ i.prenom }}</li>
                 <li>{{ i.nom }}</li>
             {% endfor %}
-        </ul>
+        </ul>--->
     </div>
 </main><!-- /.container -->
 <!-- Optional JavaScript -->
