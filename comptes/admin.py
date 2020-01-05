@@ -5,6 +5,7 @@ from .models import PersonneProjet
 from .models import ProjetMateriel
 from .models import Materiaux
 from .models import Admin
+from .models import Demande
 
 # Register your models here.
 
@@ -15,3 +16,4 @@ admin.site.register(Projet)
 admin.site.register(PersonneProjet)
 admin.site.register(Admin)
 admin.site.register(Materiaux)
+admin.site.register(Demande)
