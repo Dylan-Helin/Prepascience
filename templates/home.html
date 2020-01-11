@@ -13,8 +13,8 @@
     <title>Prepascience</title>
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logo.ico' %}">
 </head>
-<body style="padding-top: 4%;" class="bg-secondary" >
-<nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #e3f2fd;">
+<body style=" background-color: #232630;" >
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #1B68F0;">
     <a class="navbar-brand" href="#">
         <img src="{% static 'images/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
     </a>
@@ -49,8 +49,8 @@
     </div>
 </nav>
 
-<main role="main" class="container" style="margin-left: 5%; margin-right: 5%">
-    <div class="jumbotron jumbotron-fluid" >
+<main role="main"  style="padding-left: 0px;padding-right: 0px;margin-top: inherit">
+    <div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px">
              <div class="container">
                  <h1 class="display-4">PREPASCIENCE</h1>
                  <p class="lead">Bienvenue sur le site Prepascience,</p>
@@ -60,14 +60,23 @@
             </div>
 
 
+    <div class="container-fluid" style="padding-top:2rem;padding-bottom:2rem;background-color: #FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem">
     <ul>
+        {% for j in list %}
             {%  for i in personnes %}
                 <li>{{ i.prenom }}</li>
                 <li>{{ i.nom }}</li>
             {% endfor %}
+        {% endfor %}
         </ul>
     </div>
-</main><!-- /.container -->
+</main>
+<div class="container-fluid">
+    c<br>o<br>n<br>t<br>a<br>c<br>t
+</div>
+
+
+<!-- /.container -->
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
