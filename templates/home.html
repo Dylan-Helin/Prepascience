@@ -9,12 +9,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <!-- Librairie d'icônes -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <title>Prepascience</title>
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logo.ico' %}">
 </head>
 <body style=" background-color: #232630;" >
-<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #1B68F0;">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #1B68F0;border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem ">
     <a class="navbar-brand" href="#">
         <img src="{% static 'images/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
     </a>
@@ -24,21 +26,21 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#"> Projets <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="#"> <i class="fas fa-folder-open"> </i> Projets </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"> Groupes </a>
+                <a class="nav-link" href="#"> <i class="fas fa-toolbox"></i> Matériel </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"> Aide </a>
+                <a class="nav-link" href="#"> <i class="fas fa-question"></i> Aide </a>
             </li>
 
             <!--<li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li>-->
             <li class="nav-item dropdown" style="alignment: right">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Login</a>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="#">Se connecter</a>
                     <a class="dropdown-item" href="#">Creer un compte</a>
@@ -56,23 +58,38 @@
                  <p class="lead">Bienvenue sur le site Prepascience,</p>
                  <p>Sur ce site vous pourrez créer et gérer vos projets tel que des travaux pratiques ou autre,
                  vous pourrez également inviter d'autre utilisateur a travaillez sur vos projets par l'entremise de la création de groupe.</p>
+                 <button type="button" class="btn"  style="background-color: #1B68F0; color: white" >EN SAVOIR PLUS</button>
             </div>
             </div>
 
 
     <div class="container-fluid" style="padding-top:2rem;padding-bottom:2rem;background-color: #FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem">
     <ul>
-        {% for j in list %}
+        <div class="row">
+         <div class="col-md-4" align="center">
+        <h2><i class="fas fa-folder-open fa-4x" style="color:#1B68F0"></i></h2>
+        <p  style="font-size: 2rem">nombre de projets actifs actuellement </p>
+        </div>
+        <div class="col-md-4" align="center">
+        <h2><i class="fas fa-toolbox fa-4x" style="color:#1B68F0"></i></h2>
+        <p style="font-size: 2rem">nombre de matériaux disponible sur le site </p>
+        </div>
+        <div class="col-md-4" align="center">
+        <h2><i class="fas fa-users fa-4x" style="color:#1B68F0"></i></h2>
+        <p style="font-size: 2rem">nombre de personnes inscrite depuis la création du site</p>
+        </div>
+        <!--{% for j in list %}
             {%  for i in personnes %}
                 <li>{{ i.prenom }}</li>
                 <li>{{ i.nom }}</li>
             {% endfor %}
-        {% endfor %}
+        {% endfor %}-->
+        </div>
         </ul>
     </div>
 </main>
 <div class="container-fluid">
-    c<br>o<br>n<br>t<br>a<br>c<br>t
+    <p style="color: white">Contact</p>
 </div>
 
 
