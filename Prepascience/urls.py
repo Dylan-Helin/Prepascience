@@ -23,6 +23,7 @@ urlpatterns = [
     path(r'', views.homepage),
     path('materiel/', views.materiaux),
     path ('profil/', views.profil),
+    path('login/',views.login),
 ]
 
 urlpatterns+=staticfiles_urlpatterns()

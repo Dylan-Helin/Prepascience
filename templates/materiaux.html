@@ -51,17 +51,18 @@
     </div>
 </nav>
 
-<main role="main"  style="padding-left: 0px;padding-right: 0px;padding-top: 4rem; background-color: #FFFFFF">
+<main role="main"  style="padding-left: 0px;padding-right: 0px;padding-top: 4rem; background-color: #FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem">
     <div class="accordion" id="listeMateriaux">
     {% for i in mat %}
   <div class="card">
   <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{i.id}}" aria-expanded="true" aria-controls="collapse{{i.id}}" style="padding: 0px">
-    <div class="card-header" id="heading{{i.id}}" style="background-color: #1B68F0;color:#FFFFFF">
-
-      <h2 class="mb-0" style="color:#FFFFFF">
-
+    <div class="card-header" id="heading{{i.id}}" style="background-color: #1B68F0;color:#FFFFFF;transition-duration: 1s" onmouseover="this.style.background='#3D7EF1'" onmouseout="this.style.background='#1B68F0'">
+        <h2 class="mb-0" style="color:#FFFFFF">
           {{ i.nom }}
       </h2>
+        <h4 class="mb-0" style="color:#FFFFFF; position:relative" align="right">
+          {{ i.type }}
+      </h4>
     </div>
   </button>
 
