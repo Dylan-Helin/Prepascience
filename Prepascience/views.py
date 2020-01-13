@@ -15,3 +15,6 @@ def materiaux(request):
 
 def profil(request):
     return render(request, "profil.html")
+
+def login(request):
+    return render(request, "login.html")
