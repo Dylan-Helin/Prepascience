@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'', views.homepage),
     path('materiel/', views.materiaux),
+    path('login/',views.login),
 ]
 
 urlpatterns+=staticfiles_urlpatterns()

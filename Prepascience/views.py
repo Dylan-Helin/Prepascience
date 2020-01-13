@@ -14,3 +14,5 @@ def materiaux(request):
     mat = Materiaux.objects.all()
     j = 0
     return render(request, "materiaux.html", {'mat': mat, 'j': j})
+
+
