@@ -12,7 +12,7 @@
     <!-- Librairie d'icônes -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-    <title>Prepascience</title>
+    <title>Creation d'un compte</title>
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logo.ico' %}">
 </head>
 <body style=" background-color: #232630;" >
@@ -52,38 +52,27 @@
 </nav>
 
 <main role="main"  style="padding-left: 0px;padding-right: 0px;margin-top: inherit">
-    <div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px">
-             <div class="container">
-                 <h1 class="display-4">PREPASCIENCE</h1>
-                 <p class="lead">Bienvenue sur le site Prepascience,</p>
-                 <p>Sur ce site vous pourrez créer et gérer vos projets tels que des travaux pratiques ou autres,
-                 vous pourrez également inviter d'autres utilisateurs à travailler sur vos projets par l'entremise de la création de groupes.</p>
-                 <button type="button" class="btn"  style="background-color: #1B68F0; color: white" >EN SAVOIR PLUS</button>
-            </div>
-            </div>
-
-
     <div class="container-fluid" style="padding-top:2rem;padding-bottom:2rem;background-color: #FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem">
     <ul>
-        <div class="row">
-         <div class="col-md-4" align="center">
-        <h2><i class="fas fa-folder-open fa-4x" style="color:#1B68F0"></i></h2>
-        <p  style="font-size: 2rem">nombre de projets actifs actuellement </p>
-        </div>
-        <div class="col-md-4" align="center">
-        <h2><i class="fas fa-toolbox fa-4x" style="color:#1B68F0"></i></h2>
-        <p style="font-size: 2rem">nombre de matériaux disponibles sur le site </p>
-        </div>
-        <div class="col-md-4" align="center">
-        <h2><i class="fas fa-users fa-4x" style="color:#1B68F0"></i></h2>
-        <p style="font-size: 2rem">nombre de personnes inscrites depuis la création du site</p>
-        </div>
-        </div>
-        </ul>
+        <form class="form-signin" style="margin: auto;padding-left: 20%;padding-right: 20%">
+        <label for="Prenom" class="sr-only">Prenom</label>
+        <input type="Prenom" id="inputPrenom" class="form-control" placeholder="Prenom" required="" autofocus="">
+        <br>
+        <label for="Nom" class="sr-only">Nom</label>
+        <input type="Nom" id="inputNom" class="form-control" placeholder="Nom" required="" autofocus="">
+        <br>
+        <label for="MDP" class="sr-only">MDP</label>
+        <input type="MDP" id="inputMDP" class="form-control" placeholder="Mot de passe" required="" autofocus="">
+         <br>
+        <label for="Pseudo" class="sr-only">Pseudo</label>
+        <input type="Pseudo" id="inputPseudo" class="form-control" placeholder="Pseudo" required="" autofocus="">
+            <br>
+        <button class="btn btn-lg  btn-block" style="background-color: #1B68F0; color: white"  type="submit">Connexion</button>
+    </form>
+    </ul>
     </div>
 </main>
 <div class="container-fluid">
-    <p style="color: white">Contact</p>
 </div>
 
 
