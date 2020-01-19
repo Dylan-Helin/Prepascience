@@ -52,7 +52,14 @@
 </nav>
 
 <main role="main"  style="padding-left: 0px;padding-right: 0px;padding-top: 4rem; background-color: #FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem">
+<form class="form-inline" action="/materiel" method="GET">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="recherche" name="form" value="{{recherche}}">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Recherche</button>
+    </form>
     <div class="accordion" id="listeMateriaux">
+    {% if l == 0 %}
+        Aucun élément ne correspond à votre recherche
+    {% endif %}
     {% for i in mat %}
   <div class="card">
   <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{i.id}}" aria-expanded="true" aria-controls="collapse{{i.id}}" style="padding: 0px">
