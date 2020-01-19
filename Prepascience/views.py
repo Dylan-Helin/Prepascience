@@ -11,7 +11,7 @@ def homepage(request):
 def materiaux(request):
     if request.method == 'GET':
         form = request.GET['form']
-        if form == 'null':
+        if form == '':
             mat = Materiaux.objects.all()
         else:
             mat = Materiaux.objects.filter(nom__icontains=form)
