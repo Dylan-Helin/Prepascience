@@ -24,6 +24,8 @@ urlpatterns = [
     path('materiel/', views.materiaux),
     path ('profil/', views.profil),
     path('login/',views.login),
+    path('demande/',views.demande),
+    path('ajout/',views.ajout),
 ]
 
 urlpatterns+=staticfiles_urlpatterns()

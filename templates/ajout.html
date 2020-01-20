@@ -12,7 +12,7 @@
     <!-- Librairie d'icônes -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-    <title>Profil</title>
+    <title>Ajout</title>
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logo.ico' %}">
 </head>
 <body style=" background-color: #232630;" >
@@ -54,20 +54,52 @@
 <main role="main"  style="padding-left: 0px;padding-right: 0px;padding-top: 4rem;background-color:#FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem">
     <!-- interface du contenu propre de la page  -->
     <div class="container-fluid">
-        <h3 align="center">Profil</h3>
+        <h3 align="center">Ajout de matériaux</h3>
         </br></br>
-        <h5> Prénom : {{per.prenom}}</h5>
+        <h5 align="center">Nom :</h5>
+        </br>
+
+        <FORM align="center">
+            <TEXTAREA name="nom" rows=1 cols=40 placeholder="Nom du produit."></TEXTAREA>
+        </FORM>
+
         </br></br>
-        <h5>Nom : {{per.nom}}</h5>
+        <h5 align="center">Type :</h5>
+        </br>
+
+        <FORM align="center">
+            <TEXTAREA name="type" rows=1 cols=40 placeholder="Type du produit."></TEXTAREA>
+        </FORM>
+
         </br></br>
-        <h5>Pseudo : {{per.login}}</h5>
+        <h5 align="center">Important :</h5>
+        </br>
+
+        <FORM align="center">
+            <TEXTAREA name="important" rows=8 cols=60 placeholder="Information importante sur le produit."></TEXTAREA>
+        </FORM>
+
         </br></br>
-        <h5>Nombre de projets : <b><button type="button" class="btn btn-primary" onclick="window.location.href='#'"><h5 align="right">Voir</h5></button></b></h5>
+        <h5 align="center">Description :</h5>
+        </br>
+
+        <FORM align="center">
+            <TEXTAREA name="description" rows=8 cols=60 placeholder="Description du produit."></TEXTAREA>
+        </FORM>
+
         </br></br>
-        <h5>Nombre de projets ou vous êtes la chef de projet : <b><button type="button" class="btn btn-primary" onclick="window.location.href='#'"><h5 align="right">Voir</h5></button></b> </h5>
+        <h5 align="center">Informations générals :</h5>
+        </br>
+
+        <FORM align="center">
+            <TEXTAREA name="infoGeneral" rows=8 cols=60 placeholder="Informations générals sur le produit."></TEXTAREA>
+        </FORM>
+
         </br></br>
-        <div align="right"><button type="button" class="btn btn-primary" onclick="window.location.href='#'"><h5>Déconexion</h5></button></div>
+        <div align="center"><button type="button" class="btn btn-primary" onclick="window.location.href='#'"><h5>Valider</h5></button></div>
         </br></br>
+
+
 
     </div>
 </main>
