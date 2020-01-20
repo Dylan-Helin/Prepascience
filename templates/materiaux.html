@@ -39,26 +39,29 @@
             <!--<li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li>-->
-            <li class="nav-item dropdown" style="alignment: right">
+            </ul>
+            <div align="right" class="navbar-nav">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Login</a>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="#">Se connecter</a>
                     <a class="dropdown-item" href="#">Creer un compte</a>
                 </div>
-            </li>
+            </div>
 
-        </ul>
+
     </div>
 </nav>
 
-<main role="main"  style="padding-left: 0px;padding-right: 0px;padding-top: 4rem; background-color: #FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem">
-<form class="form-inline" action="/materiel" method="GET">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="recherche" name="form" value="{{recherche}}">
+<main role="main"  style="padding-left: 0px;padding-right: 0px;padding-top: 4rem;padding-bottom: 4rem; background-color: #FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem">
+    <div class="container-fluid" align="right">
+    <form class="form-inline"  action="/materiel" method="GET" style="display:block;margin-top: 2rem;margin-bottom: 2rem">
+      <input class="form-control mr-sm-2" type="text" placeholder="Recherche" aria-label="Recherche" id="recherche" name="form" value="{{recherche}}">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Recherche</button>
     </form>
+    </div>
     <div class="accordion" id="listeMateriaux">
     {% if l == 0 %}
-        Aucun élément ne correspond à votre recherche
+        <div align="center">Aucun élément ne correspond à votre recherche</div>
     {% endif %}
     {% for i in mat %}
   <div class="card">
@@ -73,7 +76,7 @@
     </div>
   </button>
 
-    <div id="collapse{{i.id}}" class="collapse" aria-labelledby="heading{{i.id}}" data-parent="#listeMateriaux">
+    <div id="collapse{{i.id}}" class="collapse" aria-labelledby="heading{{i.id}}" data-parent="#listeMateriaux" style="background-color: #E3F2FD">
       <div class="card-body">
         {{ i.description }}
       </div>
@@ -81,6 +84,9 @@
   </div>
     {% endfor %}
 </div>
+{% if l < 10 %}
+    <div style="margin-bottom: 25rem"></div>
+{% endif %}
 </main>
 <div class="container-fluid">
     <p style="color: white">Contact</p>
