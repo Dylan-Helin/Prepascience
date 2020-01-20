@@ -12,7 +12,6 @@ def materiaux(request):
     mat = Materiaux.objects.all()
     return render(request, "materiaux.html", {'mat': mat})
 
-
 def profil(request):
     return render(request, "profil.html")
 
