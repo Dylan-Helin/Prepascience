@@ -122,6 +122,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+LOGIN_URL = 'login/'
+
+LOGIN_EXEMPT_URLS = (
+    r'logout/$',
+    r'creation/$'
+)
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'assets'),
 )
