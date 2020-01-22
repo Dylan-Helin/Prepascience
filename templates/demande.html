@@ -12,7 +12,7 @@
     <!-- Librairie d'icônes -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-    <title>Profil</title>
+    <title>Demande</title>
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logo.ico' %}">
 </head>
 <body style=" background-color: #232630;" >
@@ -54,19 +54,25 @@
 <main role="main"  style="padding-left: 0px;padding-right: 0px;padding-top: 4rem;background-color:#FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem">
     <!-- interface du contenu propre de la page  -->
     <div class="container-fluid">
-        <h3 align="center">Profil</h3>
+        <h3 align="center">Demande</h3>
         </br></br>
-        <h5> Prénom : {{per.prenom}}</h5>
+        <h5 align="center">Titre :</h5>
+        </br>
+
+        <FORM align="center">
+            <TEXTAREA name="titre" rows=1 cols=40 placeholder="Titre de votre demande."></TEXTAREA>
+        </FORM>
+
         </br></br>
-        <h5>Nom : {{per.nom}}</h5>
+        <h5 align="center">Détails :</h5>
+        </br>
+
+        <FORM align="center">
+            <TEXTAREA name="detail" rows=10 cols=60 placeholder="Détails de votre demande."></TEXTAREA>
+        </FORM>
+
         </br></br>
-        <h5>Pseudo : {{per.login}}</h5>
-        </br></br>
-        <h5>Nombre de projets : <b><button type="button" class="btn btn-primary" onclick="window.location.href='#'"><h5 align="right">Voir</h5></button></b></h5>
-        </br></br>
-        <h5>Nombre de projets ou vous êtes la chef de projet : <b><button type="button" class="btn btn-primary" onclick="window.location.href='#'"><h5 align="right">Voir</h5></button></b> </h5>
-        </br></br>
-        <div align="right"><button type="button" class="btn btn-primary" onclick="window.location.href='#'"><h5>Déconexion</h5></button></div>
+        <div align="center"><button type="button" class="btn btn-primary" onclick="window.location.href='#'"><h5>Valider</h5></button></div>
         </br></br>
 
     </div>

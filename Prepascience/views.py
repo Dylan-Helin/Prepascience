@@ -22,8 +22,16 @@ def materiaux(request):
 
 
 def profil(request):
-    return render(request, "profil.html")
+    per = Personne.objects.filter(prenom__iexact='Angele').get
+
+    return render(request, "profil.html", {'per': per})
 
 
 def login(request):
     return render(request, "login.html")
+
+def demande(request):
+    return render(request, "demande.html")
+
+def ajout(request):
+    return render(request, "ajout.html")
