@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'Prepascience.session.LoginRequiredMiddleware'
 ]
 
 ROOT_URLCONF = 'Prepascience.urls'
@@ -120,6 +121,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_URL = 'login/'
+
+LOGIN_EXEMPT_URLS = (
+    r'logout/$',
+    r'creation/$'
+)
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'assets'),

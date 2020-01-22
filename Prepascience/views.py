@@ -20,7 +20,6 @@ def materiaux(request):
     l= len(mat)
     return render(request, "materiaux.html", {'mat': mat, 'l':l})
 
-
 def profil(request):
     per = Personne.objects.filter(prenom__iexact='Angele').get
 
