@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django import forms
 from comptes.models import *
-
+from django.contrib.auth import authenticate, login, logout
 
 def homepage(request):
     return render(request, "home.html")
@@ -30,7 +30,16 @@ def login(request):
     return render(request, "login.html")
 
 def demande(request):
-    return render(request, "demande.html")
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is None:
+        login(request, user)
+    else:
+        return render(request, "demande.html")
 
 def ajout(request):
     return render(request, "ajout.html")
+
+def logout(request):
+    logout(request)

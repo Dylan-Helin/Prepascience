@@ -124,6 +124,8 @@ STATIC_URL = '/static/'
 
 LOGIN_URL = 'login/'
 
+LOGIN_REDIRECT_URL = 'home/'
+
 LOGIN_EXEMPT_URLS = (
     r'logout/$',
     r'creation/$'

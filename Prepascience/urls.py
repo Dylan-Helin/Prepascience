@@ -1,3 +1,6 @@
+from django.conf.urls import url
+from . import views
+
 """Prepascience URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
