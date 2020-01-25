@@ -56,23 +56,25 @@
     <div class="container-fluid">
         <h3 align="center">Demande</h3>
         </br></br>
-        <h5 align="center">Titre :</h5>
-        </br>
 
         <FORM align="center">
-            <TEXTAREA name="titre" rows=1 cols=40 placeholder="Titre de votre demande."></TEXTAREA>
+            <div class="form-group container">
+                <label for="formGroupExampleInput">Titre : </label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Titre de votre demande">
+            </div>
         </FORM>
 
         </br></br>
-        <h5 align="center">Détails :</h5>
-        </br>
 
         <FORM align="center">
-            <TEXTAREA name="detail" rows=10 cols=60 placeholder="Détails de votre demande."></TEXTAREA>
+            <div class="form-group container">
+                <label for="formGroupExampleInput">Détails : </label>
+                <TEXTAREA class="form-control" name="detail" rows=10 cols=60 placeholder="Détails de votre demande"></TEXTAREA>
+            </div>
         </FORM>
 
         </br></br>
-        <div align="center"><button type="button" class="btn btn-primary" onclick="window.location.href='#'"><h5>Valider</h5></button></div>
+        <div align="center"><button type="button" class="btn btn-outline-primary" onclick="window.location.href='#'"><h5>Valider</h5></button></div>
         </br></br>
 
     </div>
