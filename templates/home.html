@@ -39,26 +39,24 @@
             <!--<li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li>-->
-            {% if user.is_authenticated %}
-                  <li class="nav-item dropdown" style="alignment: right">
+        </ul>
+        {% if user.is_authenticated %}
+            <div align="right" class="navbar-nav">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Profil</a>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="/login/">Se connecter</a>
                     <a class="dropdown-item" href="">Creer un compte</a>
                 </div>
-            </li>
+            </div>
             {% else %}
-               <li class="nav-item dropdown" style="alignment: right">
+               <div align="right" class="navbar-nav">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Login</a>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="/login/">Se connecter</a>
                     <a class="dropdown-item" href="">Creer un compte</a>
                 </div>
-            </li>
+            </div>
             {% endif %}
-
-
-        </ul>
     </div>
 </nav>
 

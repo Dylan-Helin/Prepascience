@@ -27,16 +27,16 @@ def profil(request):
 
 
 def login(request):
-    return render(request, "login.html")
-
-def demande(request):
     username = request.POST['username']
     password = request.POST['password']
     user = authenticate(request, username=username, password=password)
     if user is None:
         login(request, user)
     else:
-        return render(request, "demande.html")
+        return render(request, "login.html")
+
+def demande(request):
+    return render(request, "demande.html")
 
 def ajout(request):
     return render(request, "ajout.html")
