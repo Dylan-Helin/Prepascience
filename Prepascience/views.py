@@ -43,3 +43,8 @@ def ajout(request):
 
 def logout(request):
     logout(request)
+
+def demandead(request):
+    dem = Demande.objects.all()
+    l = len(dem)
+    return render(request, "demandead.html", {'dem': dem , 'l' : l})

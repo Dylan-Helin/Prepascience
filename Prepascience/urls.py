@@ -29,6 +29,7 @@ urlpatterns = [
     path('login/',views.login),
     path('demande/',views.demande),
     path('ajout/',views.ajout),
+    path('demandead/',views.demandead),
 ]
 
 urlpatterns+=staticfiles_urlpatterns()
