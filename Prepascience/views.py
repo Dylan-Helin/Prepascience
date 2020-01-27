@@ -1,8 +1,10 @@
-from django.http import HttpResponse
+from django.http import *
 from django.shortcuts import render
 from django import forms
+from django.views.generic import TemplateView
 from comptes.models import *
 from django.contrib.auth import authenticate, login, logout
+from django.conf import settings
 
 def homepage(request):
     return render(request, "home.html")
@@ -26,14 +28,20 @@ def profil(request):
     return render(request, "profil.html", {'per': per})
 
 
-def login(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=username, password=password)
-    if user is None:
-        login(request, user)
-    else:
-        return render(request, "login.html")
+class LoginView(TemplateView):
+
+    template_name = 'login.html'
+
+    def post (self, request, **kwargs):
+        username = request.POST.get('username', False)
+        password = request.POST.get('password', False)
+        user =authenticate(username=username, password=password)
+        if user is not None and user.is_active:
+            login(request, user)
+            return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL )
+        return render(request, self.template_name)
+
+
 
 def demande(request):
     return render(request, "demande.html")

@@ -122,9 +122,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_URL = 'login/'
+#LOGIN_URL = '/login/'
 
-LOGIN_REDIRECT_URL = 'home/'
+LOGIN_REDIRECT_URL = '/'
 
 LOGIN_EXEMPT_URLS = (
     r'logout/$',
