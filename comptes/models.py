@@ -60,6 +60,7 @@ class ProjetMateriel(models.Model):
 class Demande(models.Model):
     titre = models.CharField(max_length=100)
     contenu = TextField()
+    type = models.CharField(max_length=100)
 
     def __str__(self):
         return self.titre
