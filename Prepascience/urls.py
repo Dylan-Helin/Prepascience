@@ -27,7 +27,7 @@ urlpatterns = [
     path(r'', views.homepage),
     path('materiel/', views.materiaux),
     path('profil/', views.profil),
-    path('login/', LoginView.as_view()),
+    path('login/', LoginView.as_view(), {'template_name': 'login.html'}),
     path('demande/', views.demande),
     path('ajout/', views.ajout),
     path('demandead/', views.demandead),

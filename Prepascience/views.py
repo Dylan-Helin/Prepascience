@@ -7,7 +7,7 @@ from Prepascience.form import HomeForm
 from comptes.models import *
 from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
-from .form import loginForm
+
 
 
 def homepage(request):
@@ -45,28 +45,6 @@ def profil(request):
             login(request, user)
             return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL )
         return render(request, self.template_name)"""
-
-def get_Login(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = loginForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            return HttpResponseRedirect('/')
-
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = loginForm()
-
-    return render(request, 'login.html', {'form': form})
-
-def login(request):
-    return render(request, "login.html")
-
 
 
 def demande(request):
