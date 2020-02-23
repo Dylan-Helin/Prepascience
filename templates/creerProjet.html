@@ -1,0 +1,101 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Librairie d'icônes -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <title>Matériel</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logo.ico' %}">
+</head>
+<body style=" background-color: #232630;" >
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #1B68F0;border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem ">
+    <a class="navbar-brand" href="/">
+        <img src="{% static 'images/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#"> <i class="fas fa-folder-open"> </i> Projets </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/materiel/?form="> <i class="fas fa-toolbox"></i> Matériel </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"> <i class="fas fa-question"></i> Aide </a>
+            </li>
+
+            <!--<li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>-->
+            </ul>
+            {% if user.is_authenticated %}
+            <div align="right" class="navbar-nav">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Profil</a>
+                <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="/login/">Se connecter</a>
+                    <a class="dropdown-item" href="">Creer un compte</a>
+                </div>
+            </div>
+            {% else %}
+               <div align="right" class="navbar-nav">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Login</a>
+                <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="/login/">Se connecter</a>
+                    <a class="dropdown-item" href="">Creer un compte</a>
+                </div>
+            </div>
+            {% endif %}
+
+
+    </div>
+</nav>
+
+<main role="main"  style="padding-left: 0px;padding-right: 0px;padding-top: 4rem;padding-bottom: 4rem; background-color: #FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem">
+    <div class="container-fluid container">
+        <div style="background-color: #1B68F0" align="center" class="shadow-lg p-3 mb-5 text-white"><h4>Nouveau projet</h4></div>
+        </br>
+
+        <FORM method="POST">
+            <div class="form-group container">
+                <label for="formGroupExampleInput">Nom du projet :</label>
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+            <div class="form-group container">
+                <label for="formGroupExampleInput">Type du projet :</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type de votre projet">
+            </div>
+            <div class="form-group container">
+                <label for="formGroupExampleInput">Description :</label>
+                <TEXTAREA class="form-control" name="detail" rows=10 cols=60 placeholder="Description de votre projet"></TEXTAREA>
+            </div>
+
+        <div><button type="submit" class="btn btn-outline-primary"><h5>Valider</h5></button></div>
+        </FORM>
+    </div>
+</main>
+<div class="container-fluid">
+    <p style="color: white">Contact</p>
+</div>
+
+
+<!-- /.container -->
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
