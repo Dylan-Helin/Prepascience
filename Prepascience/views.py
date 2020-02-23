@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from django.shortcuts import render
 from django import forms
 
-from Prepascience.form import HomeForm
+from Prepascience.form import *
 from comptes.models import *
 from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
@@ -69,5 +69,16 @@ class ajoutProjet(TemplateView):
     template_name = 'creerProjet.html'
 
     def get(self, request):
-        form = HomeForm
+        form = Projetform()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = Projetform(request.POST)
+        if form.is_valid():
+            projet = form.save(commit=False)
+            projet.chefProjet = request.user
+            projet.save()
+
+            form = Projetform()
+
         return render(request, self.template_name, {'form': form})

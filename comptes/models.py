@@ -41,7 +41,7 @@ class Projet(models.Model):
     nom = models.CharField(max_length=100)
     type = models.CharField(max_length=100)
     description = TextField()
-    chefProjet = models.ForeignKey(Personne, on_delete=models.CASCADE)
+    chefProjet = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nom
@@ -49,7 +49,7 @@ class Projet(models.Model):
 
 class PersonneProjet(models.Model):
     projet = models.ForeignKey(Projet, on_delete=models.CASCADE)
-    personne = models.ForeignKey(Personne, on_delete=models.CASCADE)
+    personne = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class ProjetMateriel(models.Model):
@@ -60,7 +60,6 @@ class ProjetMateriel(models.Model):
 class Demande(models.Model):
     titre = models.CharField(max_length=100)
     contenu = TextField()
-    type = models.CharField(max_length=100)
 
     def __str__(self):
         return self.titre
