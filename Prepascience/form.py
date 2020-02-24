@@ -4,9 +4,11 @@ from comptes.models import *
 
 
 class Projetform(forms.ModelForm):
-    #Nom_du_projet_ = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    #Type_du_projet_ = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    #Description_ = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    nom = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    b = Materiaux.objects.values_list('type', flat=True).distinct()
+    c = [(id, id) for id in b]
+    type = forms.ChoiceField(choices=c, widget=forms.Select(attrs={'class': 'form-control'}))
+    description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
 
     class Meta:
         model = Projet

@@ -12,7 +12,7 @@
     <!-- Librairie d'icônes -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-    <title>Matériel</title>
+    <title>Projets</title>
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logo.ico' %}">
 </head>
 <body style=" background-color: #232630;" >
@@ -26,10 +26,10 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="#"> <i class="fas fa-folder-open"> </i> Projets </a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/materiel/?form="> <i class="fas fa-toolbox"></i> Matériel </a>
             </li>
             <li class="nav-item">
@@ -69,18 +69,10 @@
 
         <FORM method="POST">
             <div class="form-group container">
-                <label for="formGroupExampleInput">Nom du projet :</label>
                 {% csrf_token %}
                 {{ form.as_p }}
             </div>
-            <div class="form-group container">
-                <label for="formGroupExampleInput">Type du projet :</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type de votre projet">
-            </div>
-            <div class="form-group container">
-                <label for="formGroupExampleInput">Description :</label>
-                <TEXTAREA class="form-control" name="detail" rows=10 cols=60 placeholder="Description de votre projet"></TEXTAREA>
-            </div>
+        <br>
 
         <div><button type="submit" class="btn btn-outline-primary"><h5>Valider</h5></button></div>
         </FORM>
