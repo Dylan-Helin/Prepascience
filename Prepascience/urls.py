@@ -28,7 +28,7 @@ urlpatterns = [
     path('materiel/', views.materiaux),
     path ('profil/', views.profil),
     path('login/',LoginView.as_view(template_name='login.html')),
-    path('demande/',views.demande),
+    path('demande/',views.demande.as_view()),
     path('ajout/',views.ajout),
     path('demandead/',views.demandead),
     path('ajoutProjet/', views.ajoutProjet.as_view()),

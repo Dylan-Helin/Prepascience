@@ -47,8 +47,21 @@ def profil(request):
         return render(request, self.template_name)"""
 
 
-def demande(request):
-    return render(request, "demande.html")
+class demande(TemplateView):
+    template_name = 'demande.html'
+
+    def get(self, request):
+        form = Demandeform()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = Demandeform(request.POST)
+        if form.is_valid():
+            form.save()
+
+            form = Demandeform
+
+        return render(request, self.template_name, {'form': form})
 
 
 def ajout(request):
@@ -101,3 +114,4 @@ class ajoutProfil(TemplateView):
 
             form = CreaProform()
         return render(request, self.template_name, {'form': form})
+

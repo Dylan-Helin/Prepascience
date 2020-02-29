@@ -24,3 +24,10 @@ class CreaProform(forms.ModelForm):
         model = User
         fields = ('username', 'password')
 
+class Demandeform(forms.ModelForm):
+    titre = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    contenu = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
+
+    class Meta:
+        model = Demande
+        fields = ('titre', 'contenu')
