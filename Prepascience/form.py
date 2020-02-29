@@ -13,3 +13,14 @@ class Projetform(forms.ModelForm):
     class Meta:
         model = Projet
         fields = ('nom', 'type', 'description')
+
+
+class CreaProform(forms.ModelForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+    password = forms.CharField(widget=forms.PasswordInput())
+
+
+    class Meta:
+        model = User
+        fields = ('username', 'password')
+

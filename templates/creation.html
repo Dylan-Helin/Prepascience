@@ -12,7 +12,7 @@
     <!-- Librairie d'icônes -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-    <title>Creation d'un compte</title>
+    <title>Creation d'un profil</title>
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logo.ico' %}">
 </head>
 <body style=" background-color: #232630;" >
@@ -26,7 +26,7 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="#"> <i class="fas fa-folder-open"> </i> Projets </a>
             </li>
             <li class="nav-item">
@@ -39,13 +39,14 @@
             <!--<li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li>-->
-        </ul>
-        {% if user.is_authenticated %}
+            </ul>
+            {% if user.is_authenticated %}
             <div align="right" class="navbar-nav">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Profil</a>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="/login/">Se connecter</a>
-                    <a class="dropdown-item" href="">Creer un compte</a>
+                     <a class="dropdown-item" href="/profil/">Voir mon profil</a>
+                    <a class="dropdown-item" href="">Demande</a>
+                    <a class="dropdown-item" href="/logout/">Deconnexion</a>
                 </div>
             </div>
             {% else %}
@@ -57,40 +58,28 @@
                 </div>
             </div>
             {% endif %}
+
+
     </div>
 </nav>
 
-<main role="main"  style="padding-left: 0px;padding-right: 0px;margin-top: inherit">
-    <br>
-    <div class="container-fluid" style="padding-top:2rem;padding-bottom:2rem;background-color: #FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem">
-        <ul>
-            <br>
-        <h2 align="center"> Veuillez renseigner tout les champs pour la creation de votre compte.</h2>
-            <br>
-        <form class="form-signin" style="margin: auto;padding-left: 20%;padding-right: 20%">
-        <label for="Prenom" class="sr-only">Prenom</label>
-        <input type="Prenom" id="inputPrenom" class="form-control" placeholder="Prenom" required="" autofocus="">
-        <br>
-        <label for="Nom" class="sr-only">Nom</label>
-        <input type="Nom" id="inputNom" class="form-control" placeholder="Nom" required="" autofocus="">
-        <br>
-        <label for="MDP" class="sr-only">MDP</label>
-        <input type="MDP" id="inputMDP" class="form-control" placeholder="Mot de passe" required="" autofocus="">
-         <br>
-         <label for="MDPC" class="sr-only">MDP</label>
-        <input type="MDPC" id="inputMDPC" class="form-control" placeholder="Confirmer mot de passe" required="" autofocus="">
-         <br>
+<main role="main"  style="padding-left: 0px;padding-right: 0px;padding-top: 4rem;padding-bottom: 4rem; background-color: #FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem">
+    <div class="container-fluid container">
+        <div style="background-color: #1B68F0" align="center" class="shadow-lg p-3 mb-5 text-white"><h4>Nouveau profil</h4></div>
+        </br>
 
-        <label for="Pseudo" class="sr-only">Pseudo</label>
-        <input type="Pseudo" id="inputPseudo" class="form-control" placeholder="Pseudo" required="" autofocus="">
-            <br>
-        <button class="btn btn-lg  btn-block" style="background-color: #1B68F0; color: white"  type="submit">Valider</button>
-    </form>
-    </ul>
+        <FORM method="POST">
+            <div class="form-group container">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+        <br>
+
+        <div><button type="submit" class="btn btn-outline-primary"><h5>Valider</h5></button></div>
+        </FORM>
     </div>
 </main>
-<div class="container-fluid">
-</div>
+
 
 
 <!-- /.container -->

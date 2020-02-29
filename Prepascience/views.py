@@ -84,3 +84,20 @@ class ajoutProjet(TemplateView):
             form = Projetform()
 
         return render(request, self.template_name, {'form': form})
+
+class ajoutProfil(TemplateView):
+    template_name = "creation.html"
+
+    def get(self,request):
+        form = CreaProform()
+        return render(request, self.template_name,{'form':form})
+
+    def post(self, request):
+        form =CreaProform(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(user.password)
+            user.save()
+
+            form = CreaProform()
+        return render(request, self.template_name, {'form': form})
