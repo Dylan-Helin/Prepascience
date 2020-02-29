@@ -74,6 +74,8 @@ class ajoutProjet(TemplateView):
 
     def post(self, request):
         form = Projetform(request.POST)
+        type = request.POST.get('type')
+        form.fields['type'].choices = [(type, type)]
         if form.is_valid():
             projet = form.save(commit=False)
             projet.chefProjet = request.user
