@@ -64,8 +64,22 @@ class demande(TemplateView):
         return render(request, self.template_name, {'form': form})
 
 
-def ajout(request):
-    return render(request, "ajout.html")
+class ajout(TemplateView):
+    template_name = 'ajout.html'
+
+    def get(self, request):
+        form = Ajoutform()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = Ajoutform(request.POST)
+        if form.is_valid():
+            form.save()
+
+            form = Ajoutform
+
+        return render(request, self.template_name, {'form': form})
+
 
 
 def logout(request):
