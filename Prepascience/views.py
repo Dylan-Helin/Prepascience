@@ -28,7 +28,7 @@ def materiaux(request):
 
 
 def profil(request):
-    per = Personne.objects.filter(prenom__iexact='Angele').get
+    per = User.objects.filter(username__iexact=request.user.username).get
 
     return render(request, "profil.html", {'per': per})
 
