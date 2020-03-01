@@ -29,8 +29,11 @@ def materiaux(request):
 
 def profil(request):
     per = User.objects.filter(username__iexact=request.user.username).get
+    nbp = PersonneProjet.objects.filter(personne__exact=request.user).count()
+    nbcp = Projet.objects.filter(chefProjet__exact=request.user).count()
+    nbp = nbp + nbcp
 
-    return render(request, "profil.html", {'per': per})
+    return render(request, "profil.html", {'per': per, 'nbp': nbp, 'nbcp': nbcp})
 
 
 """class LoginView(TemplateView):
