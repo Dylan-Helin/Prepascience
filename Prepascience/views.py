@@ -9,7 +9,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
 
 
-
 def homepage(request):
     return render(request, "home.html")
 
@@ -85,15 +84,16 @@ class ajoutProjet(TemplateView):
 
         return render(request, self.template_name, {'form': form})
 
+
 class ajoutProfil(TemplateView):
     template_name = "creation.html"
 
-    def get(self,request):
+    def get(self, request):
         form = CreaProform()
-        return render(request, self.template_name,{'form':form})
+        return render(request, self.template_name, {'form': form})
 
     def post(self, request):
-        form =CreaProform(request.POST)
+        form = CreaProform(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.set_password(user.password)
@@ -101,3 +101,9 @@ class ajoutProfil(TemplateView):
 
             form = CreaProform()
         return render(request, self.template_name, {'form': form})
+
+
+def projets(request):
+    pchef = Projet.objects.filter(chefProjet__exact=request.user)
+    pcollab = PersonneProjet.objects.filter(personne__exact=request.user)
+    return render(request, "projet.html", {'pchef': pchef, 'pcollab': pcollab})

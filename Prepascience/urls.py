@@ -34,6 +34,7 @@ urlpatterns = [
     path('ajoutProjet/', views.ajoutProjet.as_view()),
     path('logout/',LogoutView.as_view(template_name='logout.html')),
     path('ajoutProfil/', views.ajoutProfil.as_view()),
+    path('projets/',views.projets),
 ]
 
 urlpatterns+=staticfiles_urlpatterns()
