@@ -27,9 +27,12 @@ def materiaux(request):
 
 
 def profil(request):
-    per = Personne.objects.filter(prenom__iexact='Angele').get
+    per = User.objects.filter(username__iexact=request.user.username).get
+    nbp = PersonneProjet.objects.filter(personne__exact=request.user).count()
+    nbcp = Projet.objects.filter(chefProjet__exact=request.user).count()
+    nbp = nbp + nbcp
 
-    return render(request, "profil.html", {'per': per})
+    return render(request, "profil.html", {'per': per, 'nbp': nbp, 'nbcp': nbcp})
 
 
 """class LoginView(TemplateView):
@@ -46,12 +49,39 @@ def profil(request):
         return render(request, self.template_name)"""
 
 
-def demande(request):
-    return render(request, "demande.html")
+class demande(TemplateView):
+    template_name = 'demande.html'
+
+    def get(self, request):
+        form = Demandeform()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = Demandeform(request.POST)
+        if form.is_valid():
+            form.save()
+
+            form = Demandeform
+
+        return render(request, self.template_name, {'form': form})
 
 
-def ajout(request):
-    return render(request, "ajout.html")
+class ajout(TemplateView):
+    template_name = 'ajout.html'
+
+    def get(self, request):
+        form = Ajoutform()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = Ajoutform(request.POST)
+        if form.is_valid():
+            form.save()
+
+            form = Ajoutform
+
+        return render(request, self.template_name, {'form': form})
+
 
 
 def logout(request):

@@ -67,24 +67,18 @@
         <div style="background-color: #1B68F0" align="center" class="shadow-lg p-3 mb-5 text-white"><h4>Demande</h4></div>
         </br>
 
-        <FORM>
+        <FORM method="POST">
             <div class="form-group container">
-                <label for="formGroupExampleInput">Titre : </label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Titre de votre demande">
+                {% csrf_token %}
+                {{ form.as_p }}
             </div>
 
-
-            </br>
-
-
-            <div class="form-group container">
-                <label for="formGroupExampleInput">Détails : </label>
-                <TEXTAREA class="form-control" name="detail" rows=10 cols=60 placeholder="Détails de votre demande"></TEXTAREA>
-            </div>
-        </FORM>
 
         </br>
-        <div><button type="button" class="btn btn-outline-primary" onclick="window.location.href='#'"><h5>Valider</h5></button></div>
+        <div><button type="submit" class="btn btn-outline-primary"><h5>Valider</h5></button></div>
+
+        </FORM>
+
         </br></br>
 
     </div>

@@ -24,3 +24,23 @@ class CreaProform(forms.ModelForm):
         model = User
         fields = ('username', 'password')
 
+class Demandeform(forms.ModelForm):
+    titre = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    contenu = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
+
+    class Meta:
+        model = Demande
+        fields = ('titre', 'contenu')
+
+
+class Ajoutform(forms.ModelForm):
+    nom = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    type = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    important = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
+    description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
+    infoGeneral = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
+
+
+    class Meta:
+        model = Materiaux
+        fields = ('nom', 'type', 'important', 'description', 'infoGeneral')
