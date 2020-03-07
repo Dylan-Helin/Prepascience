@@ -46,7 +46,7 @@ class Ajoutform(forms.ModelForm):
     type = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     important = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
     description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
-    infoGeneral = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
+    infoGeneral = forms.CharField(label='Informations générales', widget=forms.Textarea(attrs={'class': 'form-control'}))
 
     class Meta:
         model = Materiaux
