@@ -10,7 +10,10 @@ from django.conf import settings
 
 
 def homepage(request):
-    return render(request, "home.html")
+    nbp = Projet.objects.all().count()
+    nbm = Materiaux.objects.all().count()
+    nbu = User.objects.all().count()
+    return render(request, "home.html", {'nbm': nbm, 'nbp': nbp, 'nbu': nbu})
 
 
 def materiaux(request):
