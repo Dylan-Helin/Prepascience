@@ -15,14 +15,22 @@ class Projetform(forms.ModelForm):
         fields = ('nom', 'type', 'description')
 
 
-class CreaProform(forms.ModelForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
+class AjoutCollab(forms.ModelForm):
+    nom = forms.CharField(label='Pseudo', widget=forms.TextInput(attrs={'class': 'form-control mr-sm-2'}))
 
+    class Meta:
+        model = PersonneProjet
+        fields = ()
+
+
+class CreaProform(forms.ModelForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User
         fields = ('username', 'password')
+
 
 class Demandeform(forms.ModelForm):
     titre = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -39,7 +47,6 @@ class Ajoutform(forms.ModelForm):
     important = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
     description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
     infoGeneral = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
-
 
     class Meta:
         model = Materiaux

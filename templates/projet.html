@@ -89,6 +89,91 @@
 
     <div id="collapse{{i.id}}" class="collapse" aria-labelledby="heading{{i.id}}" data-parent="#projetsChef" style="background-color: #E3F2FD" align="left">
       <div class="card-body">
+      <p>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse0{{ i.id }}" aria-expanded="false" aria-controls="collapse0{{ i.id }}">
+            Collaborateurs
+          </button>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse0a{{ i.id }}" aria-expanded="false" aria-controls="collapse0a{{ i.id }}">
+            Materiel du projet
+          </button>
+      </p>
+        <div class="collapse" id="collapse0{{ i.id }}">
+          <div class="card card-body">
+              <h6>Ajouter un collaborateur :</h6>
+          <FORM method="POST" class="form-inline my-2 my-lg-0">
+
+
+
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="hidden" name="i" value={{ i.id }}>
+
+
+              <button type="submit" style="margin-left:1rem" class="btn btn-outline-primary my-2 my-sm-0"><h5>Valider</h5></button>
+
+        </FORM>
+          <br>
+              <h6>nom du chef : </h6>{{ i.chefProjet.username }}
+          <br>
+          <br>
+              <h6>noms des collaborateurs :</h6>
+          {% for j in nomcollab %}
+            {% if j.projet.id == i.id %}
+              {{ j.personne.username }}
+                <br>
+            {% endif %}
+          {% endfor %}
+          </div>
+        </div>
+        <div class="collapse" id="collapse0a{{ i.id }}">
+          <div class="card card-body">
+            Liste de matériel
+
+
+              <div class="accordion" id="listeMateriaux{{ i.id }}">
+                    {% for k in listeMat %}
+                        {% if k.projet.id == i.id %}
+                          <div class="card">
+                          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ i.id }}{{ k.id }}" aria-expanded="true" aria-controls="collapse{{ i.id }}{{ k.id }}" style="padding: 0px">
+                            <div class="card-header" id="heading{{ i.id }}{{ k.id }}" style="background-color: #56C9FF;color:#FFFFFF;transition-duration: 0.5s;text-decoration: none;" onmouseover="this.style.background='#1B68F0'" onmouseout="this.style.background='#56C9FF'">
+                                <h2 class="mb-0" style="color:#FFFFFF">
+                                  {{ k.materiaux.nom }}
+                              </h2>
+                                <h4 class="mb-0" style="color:#FFFFFF; position:relative" align="right">
+                                  {{ k.materiaux.type }}
+                              </h4>
+                            </div>
+                          </button>
+
+                            <div id="collapse{{ i.id }}{{ k.id }}" class="collapse" aria-labelledby="heading{{ i.id }}{{ k.id }}" data-parent="#listeMateriaux" style="background-color: #E3F2FD" align="left">
+                              <div class="card-body">
+                                  {% if user.is_authenticated %}
+                                      <div class="btn-group" align="right">
+                                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            +
+                                        </button>
+                                        <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">projet 1</a>
+                                        <a class="dropdown-item" href="#">projet 2</a>
+                                        <a class="dropdown-item" href="#">projet 2</a>
+                                        </div>
+                                        </div><br><br>
+                                  {% endif %}
+                                {{ k.materiaux.description }}<br><br>
+                                {{ k.materiaux.important }}<br><br>
+                                {{ k.materiaux.infoGeneral }}
+                              </div>
+                            </div>
+                          </div>
+                        {% endif %}
+                    {% endfor %}
+              </div>
+
+
+
+          </div>
+        </div>
+      <br>
         {{ i.description }}
       </div>
     </div>
@@ -114,6 +199,37 @@
 
     <div id="collapse2{{i.id}}" class="collapse" aria-labelledby="heading2{{i.id}}" data-parent="#projetsCollab" style="background-color: #E3F2FD" align="left">
       <div class="card-body">
+          <p>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse1{{ i.id }}" aria-expanded="false" aria-controls="collapse1{{ i.id }}">
+            Collaborateurs
+          </button>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse1a{{ i.id }}" aria-expanded="false" aria-controls="collapse1a{{ i.id }}">
+            Materiel du projet
+          </button>
+      </p>
+        <div class="collapse" id="collapse1{{ i.id }}">
+          <div class="card card-body">
+
+
+          nom du chef : {{ i.projet.chefProjet.username }}
+          <br>
+          <br>
+          noms des collaborateurs :
+      <br>
+          {% for j in nomcollab %}
+            {% if j.projet.id == i.projet.id %}
+              {{ j.personne.username }}
+                <br>
+            {% endif %}
+          {% endfor %}
+          </div>
+        </div>
+      <div class="collapse" id="collapse1a{{ i.id }}">
+      <div class="card card-body">
+        Liste de matériel
+      </div>
+    </div>
+        <br>
         {{ i.projet.description }}
       </div>
     </div>
