@@ -18,14 +18,12 @@
 
 <body class="text-center" style="background-color: #232630" >
     <div class="container-sm" style="padding-top:2rem;padding-bottom:2rem;background-color: #FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem;border-top-left-radius: 1rem;border-top-right-radius: 1rem;margin-top: 16rem">
-        <form class="form-signin" style="margin: auto;padding-left: 20%;padding-right: 20%"  method="post">
         {% csrf_token %}
         <img src="{% static 'images/logo.png' %}" width="72" height="72" alt="" >
             <h1 class="h3 mb-3 font-weight-normal">Deconnexion reussie</h1>
 
             <br>
-        <button class="btn btn-lg  btn-block" style="background-color: #1B68F0; color: white" type="submit" href="/">Retour a l'accueil</button>
-        </form>
+        <a href="/"><button class="btn btn-lg  btn-block" style="background-color: #1B68F0; color: white" type="button">Retour a l'accueil</button></a>
     </div>
 
 </body>
