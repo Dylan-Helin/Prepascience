@@ -134,6 +134,9 @@ class ajoutProfil(TemplateView):
 
 
 def projets(request):
-    pchef = Projet.objects.filter(chefProjet__exact=request.user)
-    pcollab = PersonneProjet.objects.filter(personne__exact=request.user)
-    return render(request, "projet.html", {'pchef': pchef, 'pcollab': pcollab})
+    if request.user.is_authenticated:
+        pchef = Projet.objects.filter(chefProjet__exact=request.user)
+        pcollab = PersonneProjet.objects.filter(personne__exact=request.user)
+        return render(request, "projet.html", {'pchef': pchef, 'pcollab': pcollab})
+    else:
+        return render(request, "projet.html")
