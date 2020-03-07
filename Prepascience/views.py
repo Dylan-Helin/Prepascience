@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.views.generic import TemplateView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django import forms
 
 from Prepascience.form import *
@@ -86,7 +86,6 @@ class ajout(TemplateView):
         return render(request, self.template_name, {'form': form})
 
 
-
 def logout(request):
     logout(request)
 
@@ -136,10 +135,35 @@ class ajoutProfil(TemplateView):
         return render(request, self.template_name, {'form': form})
 
 
-def projets(request):
-    if request.user.is_authenticated:
-        pchef = Projet.objects.filter(chefProjet__exact=request.user)
-        pcollab = PersonneProjet.objects.filter(personne__exact=request.user)
-        return render(request, "projet.html", {'pchef': pchef, 'pcollab': pcollab})
-    else:
-        return render(request, "projet.html")
+class projets(TemplateView):
+
+    def get(self, request):
+        form = AjoutCollab()
+        if request.user.is_authenticated:
+            pchef = Projet.objects.filter(chefProjet__exact=request.user)
+            pcollab = PersonneProjet.objects.filter(personne__exact=request.user)
+            nomcollab = PersonneProjet.objects.all()
+            listeMat = ProjetMateriel.objects.all()
+            return render(request, "projet.html", {'pchef': pchef, 'pcollab': pcollab, 'form': form, 'nomcollab': nomcollab, 'listeMat': listeMat})
+        else:
+            return render(request, "projet.html")
+
+    def post(self, request):
+        form = AjoutCollab(request.POST)
+        nom=request.POST.get('nom')
+        id=int(request.POST.get('i'))
+        if form.is_valid():
+            collaborateur = User.objects.filter(username__exact=nom)
+            projet = Projet.objects.filter(id__exact=id).get()
+            testDejaExistant = PersonneProjet.objects.filter(personne=collaborateur.get(),projet=projet)
+            if testDejaExistant:
+                return redirect('/projets')
+            if not collaborateur:
+                return redirect('/projets')
+            else:
+                b=form.save(commit=False)
+                b.personne = collaborateur.get()
+                b.projet = projet
+                b.save()
+                form = AjoutCollab()
+                return redirect('/projets')
