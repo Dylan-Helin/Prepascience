@@ -25,7 +25,7 @@ from django.contrib.auth.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'', views.homepage),
-    path('materiel/', views.materiaux),
+    path('materiel/', views.materiaux.as_view()),
     path ('profil/', views.profil),
     path('login/',LoginView.as_view(template_name='login.html')),
     path('demande/',views.demande.as_view()),

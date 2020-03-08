@@ -95,20 +95,50 @@
     <div id="collapse{{i.id}}" class="collapse" aria-labelledby="heading{{i.id}}" data-parent="#listeMateriaux" style="background-color: #E3F2FD" align="left">
       <div class="card-body">
           {% if user.is_authenticated %}
+              <form method="POST">
+              {% csrf_token %}
               <div class="btn-group" align="right">
                 <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    +
+                    ajouter a un projet
                 </button>
+                <input type="hidden" name="idmat" value={{ i.id }}>
                 <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">projet 1</a>
-                <a class="dropdown-item" href="#">projet 2</a>
-                <a class="dropdown-item" href="#">projet 2</a>
+                    {% for j in projets %}
+                        {% if j.type == i.type %}
+                            <button name="idproj" value={{ j.id }} type="submit" class="dropdown-item" >{{ j.nom }}</button>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-                </div><br><br>
+                </div>
+              </form>
+              <br><br>
           {% endif %}
-        {{ i.description }}<br><br>
-        {{ i.important }}<br><br>
-        {{ i.infoGeneral }}
+        <p>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseMat1{{ i.id }}" aria-expanded="false" aria-controls="collapseMat1{{ i.id }}">
+                Description
+            </button>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseMat2{{ i.id }}" aria-expanded="false" aria-controls="collapseMat2{{ i.id }}">
+                Points Importants
+            </button>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseMat3{{ i.id }}" aria-expanded="false" aria-controls="collapseMat3{{ i.id }}">
+                Informations générales
+            </button>
+        </p>
+          <div class="collapse" id="collapseMat1{{ i.id }}">
+              <div class="card card-body">
+                  {{ i.description }}
+              </div>
+          </div>
+          <div class="collapse" id="collapseMat2{{ i.id }}">
+              <div class="card card-body">
+                  {{ i.important }}
+              </div>
+          </div>
+          <div class="collapse" id="collapseMat3{{ i.id }}">
+              <div class="card card-body">
+                  {{ i.infoGeneral }}
+              </div>
+          </div>
       </div>
     </div>
   </div>

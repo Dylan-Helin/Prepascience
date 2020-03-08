@@ -23,6 +23,12 @@ class AjoutCollab(forms.ModelForm):
         fields = ()
 
 
+class AjoutMateriel(forms.ModelForm):
+    class Meta:
+        model = ProjetMateriel
+        fields = ()
+
+
 class CreaProform(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
@@ -46,7 +52,8 @@ class Ajoutform(forms.ModelForm):
     type = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     important = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
     description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
-    infoGeneral = forms.CharField(label='Informations générales', widget=forms.Textarea(attrs={'class': 'form-control'}))
+    infoGeneral = forms.CharField(label='Informations générales',
+                                  widget=forms.Textarea(attrs={'class': 'form-control'}))
 
     class Meta:
         model = Materiaux
