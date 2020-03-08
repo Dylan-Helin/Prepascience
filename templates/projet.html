@@ -127,8 +127,10 @@
         </div>
         <div class="collapse" id="collapse0a{{ i.id }}">
           <div class="card card-body">
-            Liste de matériel
-
+            <div align="center">
+            <a href="/materiel/?form="><button type="button" class="btn btn-primary">Ajouter du matériel</button></a>
+            </div>
+            <br>
 
               <div class="accordion" id="listeMateriaux{{ i.id }}">
                     {% for k in listeMat %}
@@ -145,23 +147,35 @@
                             </div>
                           </button>
 
-                            <div id="collapse{{ i.id }}{{ k.id }}" class="collapse" aria-labelledby="heading{{ i.id }}{{ k.id }}" data-parent="#listeMateriaux" style="background-color: #E3F2FD" align="left">
+                            <div id="collapse{{ i.id }}{{ k.id }}" class="collapse" aria-labelledby="heading{{ i.id }}{{ k.id }}" data-parent="#listeMateriaux{{ i.id }}" style="background-color: #E3F2FD" align="left">
                               <div class="card-body">
-                                  {% if user.is_authenticated %}
-                                      <div class="btn-group" align="right">
-                                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            +
-                                        </button>
-                                        <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">projet 1</a>
-                                        <a class="dropdown-item" href="#">projet 2</a>
-                                        <a class="dropdown-item" href="#">projet 2</a>
-                                        </div>
-                                        </div><br><br>
-                                  {% endif %}
-                                {{ k.materiaux.description }}<br><br>
-                                {{ k.materiaux.important }}<br><br>
-                                {{ k.materiaux.infoGeneral }}
+                                    <p>
+                                          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseMat1{{ i.id }}{{ k.id }}" aria-expanded="false" aria-controls="collapseMat1{{ i.id }}{{ k.id }}">
+                                            Description
+                                          </button>
+                                          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseMat2{{ i.id }}{{ k.id }}" aria-expanded="false" aria-controls="collapseMat2{{ i.id }}{{ k.id }}">
+                                            Points Importants
+                                          </button>
+                                          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseMat3{{ i.id }}{{ k.id }}" aria-expanded="false" aria-controls="collapseMat3{{ i.id }}{{ k.id }}">
+                                            Informations générales
+                                          </button>
+                                    </p>
+                                    <div class="collapse" id="collapseMat1{{ i.id }}{{ k.id }}">
+                                      <div class="card card-body">
+                                        {{ k.materiaux.description }}
+                                      </div>
+                                    </div>
+                                    <div class="collapse" id="collapseMat2{{ i.id }}{{ k.id }}">
+                                      <div class="card card-body">
+                                        {{ k.materiaux.important }}
+                                      </div>
+                                    </div>
+                                    <div class="collapse" id="collapseMat3{{ i.id }}{{ k.id }}">
+                                      <div class="card card-body">
+                                        {{ k.materiaux.infoGeneral }}
+                                      </div>
+                                    </div>
+
                               </div>
                             </div>
                           </div>
@@ -211,11 +225,11 @@
           <div class="card card-body">
 
 
-          nom du chef : {{ i.projet.chefProjet.username }}
+              <h6>nom du chef :</h6> {{ i.projet.chefProjet.username }}
           <br>
           <br>
-          noms des collaborateurs :
-      <br>
+              <h6>noms des collaborateurs :</h6>
+
           {% for j in nomcollab %}
             {% if j.projet.id == i.projet.id %}
               {{ j.personne.username }}
@@ -226,7 +240,56 @@
         </div>
       <div class="collapse" id="collapse1a{{ i.id }}">
       <div class="card card-body">
-        Liste de matériel
+        <div class="accordion" id="listeMateriaux{{ i.id }}">
+                    {% for k in listeMat %}
+                        {% if k.projet.id == i.projet.id %}
+                          <div class="card">
+                          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ i.id }}{{ k.id }}" aria-expanded="true" aria-controls="collapse{{ i.id }}{{ k.id }}" style="padding: 0px">
+                            <div class="card-header" id="heading{{ i.id }}{{ k.id }}" style="background-color: #56C9FF;color:#FFFFFF;transition-duration: 0.5s;text-decoration: none;" onmouseover="this.style.background='#1B68F0'" onmouseout="this.style.background='#56C9FF'">
+                                <h2 class="mb-0" style="color:#FFFFFF">
+                                  {{ k.materiaux.nom }}
+                              </h2>
+                                <h4 class="mb-0" style="color:#FFFFFF; position:relative" align="right">
+                                  {{ k.materiaux.type }}
+                              </h4>
+                            </div>
+                          </button>
+
+                            <div id="collapse{{ i.id }}{{ k.id }}" class="collapse" aria-labelledby="heading{{ i.id }}{{ k.id }}" data-parent="#listeMateriaux{{ i.id }}" style="background-color: #E3F2FD" align="left">
+                              <div class="card-body">
+                                    <p>
+                                          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseMat1{{ i.id }}{{ k.id }}" aria-expanded="false" aria-controls="collapseMat1{{ i.id }}{{ k.id }}">
+                                            Description
+                                          </button>
+                                          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseMat2{{ i.id }}{{ k.id }}" aria-expanded="false" aria-controls="collapseMat2{{ i.id }}{{ k.id }}">
+                                            Points Importants
+                                          </button>
+                                          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseMat3{{ i.id }}{{ k.id }}" aria-expanded="false" aria-controls="collapseMat3{{ i.id }}{{ k.id }}">
+                                            Informations générales
+                                          </button>
+                                    </p>
+                                    <div class="collapse" id="collapseMat1{{ i.id }}{{ k.id }}">
+                                      <div class="card card-body">
+                                        {{ k.materiaux.description }}
+                                      </div>
+                                    </div>
+                                    <div class="collapse" id="collapseMat2{{ i.id }}{{ k.id }}">
+                                      <div class="card card-body">
+                                        {{ k.materiaux.important }}
+                                      </div>
+                                    </div>
+                                    <div class="collapse" id="collapseMat3{{ i.id }}{{ k.id }}">
+                                      <div class="card card-body">
+                                        {{ k.materiaux.infoGeneral }}
+                                      </div>
+                                    </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        {% endif %}
+                    {% endfor %}
+              </div>
       </div>
     </div>
         <br>

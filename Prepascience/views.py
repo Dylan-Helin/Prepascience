@@ -1,3 +1,4 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
@@ -14,19 +15,6 @@ def homepage(request):
     nbm = Materiaux.objects.all().count()
     nbu = User.objects.all().count()
     return render(request, "home.html", {'nbm': nbm, 'nbp': nbp, 'nbu': nbu})
-
-
-def materiaux(request):
-    if request.method == 'GET':
-        form = request.GET['form']
-        if form == '':
-            mat = Materiaux.objects.all()
-        else:
-            mat = Materiaux.objects.filter(nom__icontains=form)
-    else:
-        mat = Materiaux.objects.all()
-    l = len(mat)
-    return render(request, "materiaux.html", {'mat': mat, 'l': l})
 
 
 def profil(request):
@@ -144,26 +132,63 @@ class projets(TemplateView):
             pcollab = PersonneProjet.objects.filter(personne__exact=request.user)
             nomcollab = PersonneProjet.objects.all()
             listeMat = ProjetMateriel.objects.all()
-            return render(request, "projet.html", {'pchef': pchef, 'pcollab': pcollab, 'form': form, 'nomcollab': nomcollab, 'listeMat': listeMat})
+            return render(request, "projet.html",
+                          {'pchef': pchef, 'pcollab': pcollab, 'form': form, 'nomcollab': nomcollab,
+                           'listeMat': listeMat})
         else:
             return render(request, "projet.html")
 
     def post(self, request):
         form = AjoutCollab(request.POST)
-        nom=request.POST.get('nom')
-        id=int(request.POST.get('i'))
+        nom = request.POST.get('nom')
+        id = int(request.POST.get('i'))
         if form.is_valid():
             collaborateur = User.objects.filter(username__exact=nom)
             projet = Projet.objects.filter(id__exact=id).get()
-            testDejaExistant = PersonneProjet.objects.filter(personne=collaborateur.get(),projet=projet)
+            testDejaExistant = PersonneProjet.objects.filter(personne=collaborateur.get(), projet=projet)
             if testDejaExistant:
                 return redirect('/projets')
             if not collaborateur:
                 return redirect('/projets')
             else:
-                b=form.save(commit=False)
+                b = form.save(commit=False)
                 b.personne = collaborateur.get()
                 b.projet = projet
                 b.save()
                 form = AjoutCollab()
                 return redirect('/projets')
+
+
+class materiaux(TemplateView):
+    def get(self, request):
+        addmat = AjoutMateriel()
+        form = request.GET['form']
+        if form == '':
+            mat = Materiaux.objects.all()
+        else:
+            mat = Materiaux.objects.filter(nom__icontains=form)
+        l = len(mat)
+        if request.user.is_authenticated:
+            projets = Projet.objects.filter(chefProjet=request.user)
+            return render(request, "materiaux.html", {'mat': mat, 'l': l, 'addmat': addmat, 'projets': projets})
+        else:
+            return render(request, "materiaux.html", {'mat': mat, 'l': l, 'addmat': addmat})
+
+    def post(self, request):
+        addmat = AjoutMateriel(request.POST)
+        idmat = request.POST.get('idmat')
+        idproj = request.POST.get('idproj')
+        if addmat.is_valid():
+            projet = Projet.objects.filter(id__exact=idproj).get()
+            materiel = Materiaux.objects.filter(id__exact=idmat).get()
+            testDejaExistant = ProjetMateriel.objects.filter(projet=projet, materiaux=materiel)
+            if testDejaExistant:
+                return redirect('/materiel/?form=')
+            else:
+                lien = addmat.save(commit=False)
+                lien.projet = projet
+                lien.materiaux = materiel
+                lien.save()
+                addmat = AjoutMateriel()
+                return redirect('/materiel/?form=')
+
