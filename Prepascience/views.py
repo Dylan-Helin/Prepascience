@@ -30,7 +30,7 @@ def materiaux(request):
 
 
 def profil(request):
-    per = User.objects.filter(username__iexact=request.user.username).get
+    per = User.objects.filter(username__exact=request.user.username).get
     nbp = PersonneProjet.objects.filter(personne__exact=request.user).count()
     nbcp = Projet.objects.filter(chefProjet__exact=request.user).count()
     nbp = nbp + nbcp
