@@ -45,12 +45,16 @@
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li>-->
             </ul>
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated  %}
             <div align="right" class="navbar-nav">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="far fa-id-badge"></i> {{ request.user.username }}</a>
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-user-circle"></i> {{ request.user.username }}</a>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdown01">
                      <a class="dropdown-item" href="/profil/">Voir mon profil</a>
-                    <a class="dropdown-item" href="">Demande</a>
+                     {% if user.is_staff %}
+                    <a class="dropdown-item" href="/demandead/">Demande</a>
+                        {% else %}
+                     <a class="dropdown-item" href="/demande/">Demande</a>
+                        {% endif %}
                     <a class="dropdown-item" href="/logout/">Deconnexion</a>
                 </div>
             </div>
