@@ -16,6 +16,8 @@ def homepage(request):
     nbu = User.objects.all().count()
     return render(request, "home.html", {'nbm': nbm, 'nbp': nbp, 'nbu': nbu})
 
+def aide(request):
+    return render(request, "aide.html")
 
 def profil(request):
     per = User.objects.filter(username__exact=request.user.username).get
