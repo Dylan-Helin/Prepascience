@@ -20,12 +20,15 @@ def aide(request):
     return render(request, "aide.html")
 
 def profil(request):
-    per = User.objects.filter(username__exact=request.user.username).get
-    nbp = PersonneProjet.objects.filter(personne__exact=request.user).count()
-    nbcp = Projet.objects.filter(chefProjet__exact=request.user).count()
-    nbp = nbp + nbcp
+    if request.user.is_authenticated :
+        per = User.objects.filter(username__exact=request.user.username).get
+        nbp = PersonneProjet.objects.filter(personne__exact=request.user).count()
+        nbcp = Projet.objects.filter(chefProjet__exact=request.user).count()
+        nbp = nbp + nbcp
 
-    return render(request, "profil.html", {'per': per, 'nbp': nbp, 'nbcp': nbcp})
+        return render(request, "profil.html", {'per': per, 'nbp': nbp, 'nbcp': nbcp})
+    else:
+        return render(request, "profil.html")
 
 
 """class LoginView(TemplateView):
