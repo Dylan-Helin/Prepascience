@@ -36,6 +36,7 @@ urlpatterns = [
     path('ajoutProfil/', views.ajoutProfil.as_view()),
     path('projets/',views.projets.as_view()),
     path('aide/',views.aide),
+    path('apropos/',views.apropos),
 ]
 
 urlpatterns+=staticfiles_urlpatterns()

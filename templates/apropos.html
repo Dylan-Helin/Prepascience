@@ -1,5 +1,4 @@
 {% load static %}
-{% if user.is_authenticated and user.is_staff %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,7 +12,7 @@
     <!-- Librairie d'icônes -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-    <title>Voir les demandes | Prepascience</title>
+    <title>A propos | Prepascience</title>
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logo.ico' %}">
 </head>
 <body style=" background-color: #232630;" >
@@ -49,10 +48,10 @@
             <div align="right" class="navbar-nav">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle"></i> {{ request.user.username }}</a>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdown01">
-                     <a class="dropdown-item" href="/profil/">Voir mon profil</a>
-                     {% if user.is_staff %}
+                    <a class="dropdown-item" href="/profil/">Voir mon profil</a>
+                    {% if user.is_staff %}
                     <a class="dropdown-item" href="/demandead/">Demande</a>
-                    <a class="dropdown-item" href="/ajout/">Ajout matériel</a>
+                     <a class="dropdown-item" href="/ajout/">Ajout matériel</a>
                         {% else %}
                      <a class="dropdown-item" href="/demande/">Demande</a>
                         {% endif %}
@@ -64,47 +63,40 @@
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Login</a>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="/login/">Se connecter</a>
-                    <a class="dropdown-item" href="">Creer un compte</a>
+                    <a class="dropdown-item" href="/ajoutProfil/">Creer un compte</a>
                 </div>
             </div>
             {% endif %}
     </div>
 </nav>
 
-<main role="main"  style="padding-left: 0px;padding-right: 0px;padding-top: 4rem;background-color:#FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem">
-    <!-- interface du contenu propre de la page  -->
-    <div class="container-fluid container">
-        <div style="background-color: #1B68F0" align="center" class="shadow-lg p-3 mb-5 text-white"><h4>Demande</h4></div>
+<main role="main"  style="padding-left: 0px;padding-right: 0px;margin-top: inherit">
+     <br>
+             <br>
+    <div class="container-fluid" style="padding-top:2rem;padding-bottom:2rem;background-color: #FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem">
+        <ul>
+        <div class="row">
+         <div class="col-md-4" align="center">
 
-
-        <div class="accordion" id="listeDemande">
-    {% if l == 0 %}
-        <div align="center">Il n'y a aucune demande pour le moment</div>
-    {% endif %}
-    {% for i in dem %}
-  <div class="card">
-  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{i.id}}" aria-expanded="true" aria-controls="collapse{{i.id}}" style="padding: 0px">
-    <div class="card-header" id="heading{{i.id}}" style="background-color: #56C9FF;color:#FFFFFF;transition-duration: 0.5s" onmouseover="this.style.background='#1B68F0'" onmouseout="this.style.background='#56C9FF'">
-        <h2 class="mb-0" style="color:#FFFFFF">
-          {{ i.titre }}
-      </h2>
-
-    </div>
-  </button>
-
-    <div id="collapse{{i.id}}" class="collapse" aria-labelledby="heading{{i.id}}" data-parent="#listeDemande" style="background-color: #E3F2FD">
-      <div class="card-body">
-        {{ i.contenu }}
-      </div>
-    </div>
-  </div>
-    {% endfor %}
-</div>
-
-        </br></br>
-
+             <h2>PAR QUI ET POURQUOI  ?</h2>
+        <p style="font-size: 2rem">
+            Ce site fut produit dans le cadre d'un projet annuel universitaire et réalisé par Angèle Guery, Dylan Helin, Steven Helin
+        </p>
+        </div>
+            <div class="col-md-4" align="center">
+        <h2></h2>
+        </div>
+        <div class="col-md-4" align="center">
+        <h2>LE BUT ?</h2>
+        <p style="font-size: 2rem">
+            Sur Prépascience, la principale fonctionnalité est de pouvoir créer un projet et de pouvoir renseigner diverses informations (en ajoutant les materiaux,etc...) et d'ajouter des membres au projet afin de former un groupe pour le projet
+        </p>
+        </div>
+        </div>
+        </ul>
     </div>
 </main>
+
 
 
 <!-- /.container -->
@@ -115,40 +107,3 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
-
-    {% else %}
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <!-- Librairie d'icônes -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
-    <title>Vous n'êtes pas administrateur</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logo.ico' %}">
-</head>
-<body class="text-center" style="background-color: #232630" >
-    <div class="container-sm" style="padding-top:2rem;padding-bottom:2rem;background-color: #FFFFFF;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem;border-top-left-radius: 1rem;border-top-right-radius: 1rem;margin-top: 16rem">
-    <form class="form-signin" style="margin: auto;padding-left: 20%;padding-right: 20%"  method="post">
-        {% csrf_token %}
-
-     <img src="{% static 'images/logo.png' %}" width="72" height="72" alt="">
-        <h1 class="h3 mb-3 font-weight-normal">Vous n'avez pas les droits pour accéder à cette page</h1>
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" style="display: block">
-          <div class="btn-group mr-2" role="group" aria-label="First group">
-              <a href="/"><button type="button" style="background-color: #1B68F0; color: white; margin-top: 2rem" class="btn">Accueil</button></a>
-          </div>
-        </div>
-        <br>
-    </form>
-    </div>
-</body>
-</html>
-
-{% endif %}

@@ -19,6 +19,9 @@ def homepage(request):
 def aide(request):
     return render(request, "aide.html")
 
+def apropos(request):
+    return render(request, "apropos.html")
+
 def profil(request):
     if request.user.is_authenticated :
         per = User.objects.filter(username__exact=request.user.username).get
